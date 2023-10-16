@@ -1,0 +1,26 @@
+.info{
+    width: 90%;
+    margin: 0 auto;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    border-radius: 15px;
+}
+.infoHead{
+    text-align: center;
+    background-color: #479EFE;
+    color: #fff;
+    padding: 5px 0;
+    border-radius: 15px  15px 0 0;
+}
+.infoInner{
+ padding:30px 16px 50px;   
+}
+.infoInnerTitle{
+    text-align: center;
+    border-bottom: solid 1px #f5f5f5;
+    padding-bottom: 16px;
+    font-size: 20px;
+}
+.infoInnerText{
+    text-align: center;
+    margin-top: 16px;
+}
