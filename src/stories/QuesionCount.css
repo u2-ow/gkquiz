@@ -1,0 +1,8 @@
+.questionNumber{
+    display: flex;
+    list-style: none;
+}
+.questionNumberItem{
+    padding: 5px 10px;
+    background-color: #f5f5f5;
+}
