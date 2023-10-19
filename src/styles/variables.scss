@@ -1,0 +1,33 @@
+/* color */
+$blue:#479EFE;
+$red:#FE677A;
+$green:#1BD570;
+
+
+/* レベル選択ボタン */
+.levelBtn{
+    display: block;
+    width: 150px;
+    padding: 5px;
+    color: #fff;
+    border: unset;
+    margin:  0 auto;
+    border-radius: 50px;
+    .levelBtnInner{
+        border: solid 1px #fff;
+        display: block;
+        padding:5px;
+        border-radius: 50px;
+    }
+    
+}
+.beginnerBtn{
+    background-color: $green;
+}
+.intermediateBtn{
+    background-color: $blue;
+    margin: 16px auto;
+}
+.advancedBtn{
+    background-color: $red;
+}

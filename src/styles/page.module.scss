@@ -1,0 +1,26 @@
+ @use "variables" as v;
+.mainArea{
+    max-width: 1000px;
+    margin:  0 auto;
+    text-align: center;
+    .mainAreaTitle{
+        font-size: 50px;
+        font-weight: bold;
+        text-shadow:2px 2px 0 v.$blue, -2px -2px 0 v.$blue,
+        -2px 2px 0 v.$blue, 2px -2px 0 v.$blue,
+        0px 2px 0 v.$blue,  0-2px 0 v.$blue,
+        -2px 0 0 v.$blue, 2px 0 0 v.$blue;
+        color: v.$blue;
+        color: #fff;
+        .mainAreaTitleSub{
+            display: block;
+            font-size: 20px;
+            color: #000;
+            text-shadow: initial;
+        }
+    }
+    .mainAreaText{
+        margin-bottom: 50px;
+    }
+
+}
