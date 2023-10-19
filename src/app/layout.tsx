@@ -7,7 +7,6 @@ export const metadata: Metadata = {
   title: 'gkquiz',
   description: '一般常識クイズ！',
 }
-
 export default function RootLayout({
   children,
 }: {
