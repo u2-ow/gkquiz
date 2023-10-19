@@ -1,8 +1,11 @@
-import './globals.scss'
+import '@/styles/globals.scss'
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { M_PLUS_1 } from 'next/font/google'
 
-const inter = Inter({ subsets: ['latin'] })
+
+
+const mpuls = M_PLUS_1({ subsets: ['latin'] })
+
 
 export const metadata: Metadata = {
   title: 'gkquiz',
@@ -23,7 +26,7 @@ export default function RootLayout({
         href="https://unpkg.com/modern-css-reset/dist/reset.min.css"
       />
       </head>
-      <body className={inter.className}>{children}</body>
+      <body className={mpuls.className}>{children}</body>
     </html>
   )
 }
