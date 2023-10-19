@@ -2,11 +2,7 @@ import '@/styles/globals.scss'
 import type { Metadata } from 'next'
 import { M_PLUS_1 } from 'next/font/google'
 
-
-
 const mpuls = M_PLUS_1({ subsets: ['latin'] })
-
-
 export const metadata: Metadata = {
   title: 'gkquiz',
   description: '一般常識クイズ！',
