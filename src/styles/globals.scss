@@ -1,5 +1,25 @@
-@use "variables.scss";
+@use "variables.scss" as v;
 
 body{
   background-color: #fff;
+  background-image: url('../../public/bg.png');
+  background-position: 0 0;
+  -webkit-animation: bgroop 30s linear infinite;
+  animation: bgroop 30s linear infinite;
+  background-size: contain;
+  background-repeat: round;
+  .material-icons{
+    font-size: 50px;
+    padding: 30px 18px;
+    color: v.$pink;
+  }
 }
+@-webkit-keyframes bgroop {
+  0% { background-position: 0 0;}
+  100% { background-position: -1920px -200% }
+}
+@keyframes bgroop {
+  0% { background-position: 0 0;}
+  100% { background-position:  -1920px -200% }
+}
+
