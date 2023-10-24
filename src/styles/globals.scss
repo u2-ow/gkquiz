@@ -6,20 +6,21 @@ body{
   background-position: 0 0;
   -webkit-animation: bgroop 30s linear infinite;
   animation: bgroop 30s linear infinite;
-  background-size: contain;
-  background-repeat: round;
+  background-size:cover;
+  background-repeat: repeat;
+  @-webkit-keyframes bgroop {
+    0% { background-position: 0 0;}
+    100% { background-position: -1920px 0 }
+  }
+  @keyframes bgroop {
+    0% { background-position: 0 0;}
+    100% { background-position:  -1920px 0 }
+  }
   .material-icons{
     font-size: 50px;
     padding: 30px 18px;
     color: v.$pink;
   }
 }
-@-webkit-keyframes bgroop {
-  0% { background-position: 0 0;}
-  100% { background-position: -1920px -200% }
-}
-@keyframes bgroop {
-  0% { background-position: 0 0;}
-  100% { background-position:  -1920px -200% }
-}
+
 

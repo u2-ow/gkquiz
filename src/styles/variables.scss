@@ -2,6 +2,21 @@
 $blue:#479EFE;
 $red:#FE677A;
 $green:#1BD570;
+$pink:#ffe8e8;
+
+/* ブレイクポイント */
+$breakpoint: (
+  sp: 'screen and (min-width:640px)',
+  tab: 'screen and (min-width: 768px)',
+  pc: 'screen and (min-width: 1024px)',
+  desk-top:'screen and (min-width: 1280px)',
+);
+
+@mixin mq($bp) {
+  @media #{map-get($breakpoint, $bp)} {
+   @content;
+  }
+}
 
 
 /* レベル選択ボタン */
