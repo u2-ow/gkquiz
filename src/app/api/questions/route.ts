@@ -25,5 +25,19 @@ export const GET = async(req:Request,res:NextResponse) =>{
     }finally{
         await prisma.$disconnect();
     }
+}
 
+//問題追加用のAPI(管理者用)
+
+export const POST = async(req:Request,res:NextResponse) =>{
+    try{
+        const {questionTitle,questionAnswer} = await req.json()
+        await main();
+        const post = await prisma.post.create({data:{questionTitle,questionAnswer}})
+        return NextResponse.json({message:"Success",post},{status:201})
+    }catch(err){
+        return NextResponse.json({message:"Error",err},{status:500})
+    }finally{
+        await prisma.$disconnect();
+    }
 }
