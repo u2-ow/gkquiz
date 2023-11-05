@@ -14,12 +14,14 @@ export default function App() {
       const data = await res.json();
       const dataArray = data.posts;
       const dataArrayQuesitonTitle = dataArray.map((item:QuestionType)=>{
-        console.log(item.questionTitle)
+        return item.questionTitle
       })
-      // console.log('HAHAHAH')
-      // console.log(dataArrayItem)
+      console.log(dataArrayQuesitonTitle)
+      setJapaneseQuestion(dataArrayQuesitonTitle)
     }
+    
     fetchAllJapaneseData();
+
   },[]);
 
   return (
