@@ -14,9 +14,9 @@ export default function Home() {
     <main className={Styles.mainArea}>
       <h1 className={Styles.mainAreaTitle}>gkquizz<span className={Styles.mainAreaTitleSub}>一般常識クイズ</span></h1>
       <p className={Styles.mainAreaText}>クイズに答えて一般常識を身につけよう!</p>
-      <LevelButton className='beginnerBtn levelBtn'>初級</LevelButton>
-      <LevelButton className='intermediateBtn levelBtn'>中級</LevelButton>
-      <LevelButton className='advancedBtn levelBtn'>上級</LevelButton>
+      <LevelButton className='beginnerBtn levelBtn'>国語</LevelButton>
+      <LevelButton className='intermediateBtn levelBtn'>地理</LevelButton>
+      <LevelButton className='advancedBtn levelBtn'>政治</LevelButton>
     </main>
 
     </>
