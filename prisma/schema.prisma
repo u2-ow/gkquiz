@@ -10,7 +10,7 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Post {
+model Japanese {
   id             Int    @id @default(autoincrement())
   questionTitle  String
   questionAnswer String
