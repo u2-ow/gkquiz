@@ -1,6 +1,9 @@
 "use client"
+import FormInput from "@/components/FormInput";
 import { QuestionType } from "@/types/type";
 import { useEffect, useState } from "react";
+
+import Styles from "@/app/japanese/page.module.scss"
 
 
 
@@ -26,8 +29,9 @@ export default function App() {
 
   return (
     <div>
-      <p>{japaneseQuestion}</p>
-      <h1>日本語の問題</h1>
+      <p className={Styles.questionNumber}>第　問</p>
+      <p className={Styles.questionTitle}>{japaneseQuestion}</p>
+      <FormInput/>
     </div>
   );
 }
