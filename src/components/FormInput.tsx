@@ -6,7 +6,7 @@ export default function FormInput() {
   return (
     <>
         <form action="" className={Styles.answerForm}>
-            <input type="text" placeholder="Enterまたは改行で回答" className={Styles.answerFormInput}  />
+            <input type="text" inputMode="text" placeholder="Enterまたは改行で回答" className={Styles.answerFormInput}  />
             <Image
             src="/heart.svg"
             width={30}
