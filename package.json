@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@prisma/client": "^5.5.2",
+    "jotai": "^2.5.1",
     "material-icons": "^1.13.12",
     "next": "13.5.4",
     "react": "^18",
