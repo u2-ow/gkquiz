@@ -1,3 +1,4 @@
 import { atom } from "jotai";
 
-export const counterAtom = atom(0);
+/* ユーザーが入力した値を格納するステート*/
+export const userInputAtom = atom("");
