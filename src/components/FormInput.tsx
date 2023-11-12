@@ -3,7 +3,7 @@ import Image from "next/image";
 import Styles from "@/components/FormInput.module.scss"
 
 import { useAtom } from "jotai";
-import { userInputAtom } from '@/jotail/atoms';
+import { userInputAtom, userLifeAtom } from '@/jotail/atoms';
 
 export default function FormInput() {
 
@@ -12,6 +12,8 @@ const inputRefValue = inputRef.current as HTMLInputElement;
 
 /*グローバルステート(ユーザーが回答した内容を保存する) */
 const [userInput, setUserInput] = useAtom(userInputAtom);
+/*グローバルステート(ユーザーの残機)*/
+const [userLife,setuserLife] = useAtom(userLifeAtom);
 
 
 
@@ -23,9 +25,6 @@ const postAnswer = (e: { preventDefault: () => any; })=>{
     return e.preventDefault();
 }
 
-
-
-
   return (
     
     <>
@@ -33,10 +32,11 @@ const postAnswer = (e: { preventDefault: () => any; })=>{
             <input value={userInput} ref={inputRef} onChange={(e) => setUserInput(e.target.value)} inputMode="text" placeholder="Enterまたは改行で回答" className={Styles.answerFormInput} />
             <Image
             src="/heart.svg"
-            width={30}
-            height={30}
+            width={20}
+            height={20}
             alt="heart"
             />
+            <p>×{userLife}</p>
         </form>
     </>
 
