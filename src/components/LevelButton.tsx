@@ -1,3 +1,4 @@
+import Link from "next/link";
 
 
 type Props = {
@@ -7,8 +8,8 @@ type Props = {
 
 export default function LevelButton({children,className}: Props) {
   return (
-    <button className={className}>
+    <Link href='/japanese/q1' className={className}>
         <span className="levelBtnInner">{children}</span>
-    </button>
+    </Link>
   )
 }
