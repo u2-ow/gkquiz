@@ -3,7 +3,13 @@ import Image from "next/image";
 import Styles from "@/components/FormInput.module.scss"
 
 import { useAtom } from "jotai";
-import { userInputAtom, userLifeAtom } from '@/jotail/atoms';
+import { currentQuesionAnswerAtom, currentQuesionNumberAtom, userInputAtom, userLifeAtom } from '@/jotail/atoms';
+
+
+// type Props={
+//   onSubmit:()=>void
+// }
+
 
 export default function FormInput() {
 
@@ -15,15 +21,25 @@ const [userInput, setUserInput] = useAtom(userInputAtom);
 /*グローバルステート(ユーザーの残機)*/
 const [userLife,setuserLife] = useAtom(userLifeAtom);
 
+const[answer,setAnswer] = useAtom(currentQuesionAnswerAtom)
+const [qnumber,setQnumber] = useAtom(currentQuesionNumberAtom)
 
 
 
-
+// /*ここの関数を正誤にする */
 const postAnswer = (e: { preventDefault: () => any; })=>{
-    console.log(userInput)
-    inputRefValue.value = "";
-    return e.preventDefault();
+  ///ここに現在の問題の答えを持ってくる
+
+  inputRefValue.value = "";
+  console.log(userInput)
+  console.log('hello')
+  //問題
+  console.log(answer)
+  //問題の番号
+  console.log(qnumber)
+  return e.preventDefault();
 }
+
 
   return (
     
@@ -41,4 +57,8 @@ const postAnswer = (e: { preventDefault: () => any; })=>{
     </>
 
   )
+}
+
+function judgeAnswer() {
+  throw new Error('Function not implemented.');
 }
