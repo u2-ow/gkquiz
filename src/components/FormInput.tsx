@@ -1,17 +1,21 @@
-import React, { useRef } from 'react'
+"use client"
+import React, { useEffect, useRef } from 'react'
 import Image from "next/image";
 import Styles from "@/components/FormInput.module.scss"
 
 import { useAtom } from "jotai";
 import { currentQuesionAnswerAtom, currentQuesionNumberAtom, userInputAtom, userLifeAtom } from '@/jotail/atoms';
+import { useRouter } from 'next/navigation'
 
 
-// type Props={
-//   onSubmit:()=>void
-// }
+
+
 
 
 export default function FormInput() {
+
+  const router = useRouter()
+
 
 const inputRef = useRef<HTMLInputElement>(null)
 const inputRefValue = inputRef.current as HTMLInputElement;
@@ -26,19 +30,29 @@ const [qnumber,setQnumber] = useAtom(currentQuesionNumberAtom)
 
 
 
-// /*ここの関数を正誤にする */
-const postAnswer = (e: { preventDefault: () => any; })=>{
-  ///ここに現在の問題の答えを持ってくる
-
+const postAnswer = (e: React.FormEvent) => {
   inputRefValue.value = "";
-  console.log(userInput)
-  console.log('hello')
-  //問題
-  console.log(answer)
-  //問題の番号
-  console.log(qnumber)
-  return e.preventDefault();
-}
+  e.preventDefault();
+  setUserInput('')
+  // console.log([qnumber - 1]); 
+};
+
+
+useEffect(() => {
+  if (answer) {
+    setAnswer(answer[qnumber - 1]);
+  }
+}, []);
+useEffect(() => {
+  // userInputがanswerと一致する場合の処理
+
+
+  if (userInput === answer && userInput !== '') {
+    setUserInput('');
+    console.log('レンダリングされました')
+  }
+}, [userInput, answer]);
+
 
 
   return (
@@ -59,6 +73,11 @@ const postAnswer = (e: { preventDefault: () => any; })=>{
   )
 }
 
-function judgeAnswer() {
-  throw new Error('Function not implemented.');
-}
+
+
+
+  // if(userInput === answer){
+  //   console.log('正解！')
+  //   inputRefValue.value = "";
+  //   router.push('/')
+  // }
