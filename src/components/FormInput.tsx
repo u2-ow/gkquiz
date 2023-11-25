@@ -1,5 +1,5 @@
 "use client"
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef,useState} from 'react';
 import Image from "next/image";
 import Styles from "@/components/FormInput.module.scss"
 
@@ -14,9 +14,7 @@ import { useRouter } from 'next/navigation'
 
 export default function FormInput() {
 
-  const router = useRouter()
-
-
+const router = useRouter()
 const inputRef = useRef<HTMLInputElement>(null)
 const inputRefValue = inputRef.current as HTMLInputElement;
 
@@ -24,34 +22,39 @@ const inputRefValue = inputRef.current as HTMLInputElement;
 const [userInput, setUserInput] = useAtom(userInputAtom);
 /*グローバルステート(ユーザーの残機)*/
 const [userLife,setuserLife] = useAtom(userLifeAtom);
+/*グローバルステート(問題の答え)*/
+const[answer,setAnswer] = useAtom(currentQuesionAnswerAtom);
+/*グローバルステート(問題の番号)*/
+const [qnumber,setQnumber] = useAtom(currentQuesionNumberAtom);
 
-const[answer,setAnswer] = useAtom(currentQuesionAnswerAtom)
-const [qnumber,setQnumber] = useAtom(currentQuesionNumberAtom)
+/* ユーザーの回答 */
+const [userAnswer, setUserAnswer] = useState("")
+const anserArr = [answer[qnumber -1]]
 
+/* Appコンポーネントが更新されたかどうかを判別するためのステート*/
+const [isAppRendered, setIsAppRendered] = useState(false);
 
+useEffect(() => {
+  setIsAppRendered(true);
+}, []);
+
+useEffect(() => {
+  console.log('回答を更新');
+  if (userAnswer === anserArr[0]) {
+    router.push('/japanese/q2');
+  }
+}, [userAnswer, router]);
 
 const postAnswer = (e: React.FormEvent) => {
-  inputRefValue.value = "";
   e.preventDefault();
-  setUserInput('')
-  // console.log([qnumber - 1]); 
+  console.log(userInput);
+  console.log(anserArr[0]);
+  // Appコンポーネントがレンダリングされたことを確認する
+  if (isAppRendered) {
+    setUserAnswer(userInput);
+  }
+
 };
-
-
-useEffect(() => {
-  if (answer) {
-    setAnswer(answer[qnumber - 1]);
-  }
-}, []);
-useEffect(() => {
-  // userInputがanswerと一致する場合の処理
-
-
-  if (userInput === answer && userInput !== '') {
-    setUserInput('');
-    console.log('レンダリングされました')
-  }
-}, [userInput, answer]);
 
 
 
@@ -59,7 +62,7 @@ useEffect(() => {
     
     <>
         <form action="" onSubmit={postAnswer} className={Styles.answerForm}>
-            <input value={userInput} ref={inputRef} onChange={(e) => setUserInput(e.target.value)} inputMode="text" placeholder="Enterまたは改行で回答" className={Styles.answerFormInput} />
+            <input ref={inputRef} onChange={(e) => setUserInput(e.target.value)} inputMode="text" placeholder="Enterまたは改行で回答" className={Styles.answerFormInput} />
             <Image
             src="/heart.svg"
             width={20}
@@ -72,12 +75,3 @@ useEffect(() => {
 
   )
 }
-
-
-
-
-  // if(userInput === answer){
-  //   console.log('正解！')
-  //   inputRefValue.value = "";
-  //   router.push('/')
-  // }
