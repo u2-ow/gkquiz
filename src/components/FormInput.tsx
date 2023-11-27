@@ -5,7 +5,9 @@ import Styles from "@/components/FormInput.module.scss"
 
 import { useAtom } from "jotai";
 import { currentQuesionAnswerAtom, currentQuesionNumberAtom, userInputAtom, userLifeAtom } from '@/jotail/atoms';
-import { useRouter } from 'next/navigation'
+import { useParams, useRouter } from 'next/navigation'
+import { useLoadStage } from '@/app/lib/useLoadStage';
+
 
 
 
@@ -34,26 +36,30 @@ const anserArr = [answer[qnumber -1]]
 /* Appコンポーネントが更新されたかどうかを判別するためのステート*/
 const [isAppRendered, setIsAppRendered] = useState(false);
 
+const params = useParams();
+// console.log(params)
+
 useEffect(() => {
   setIsAppRendered(true);
 }, []);
 
-useEffect(() => {
-  console.log('回答を更新');
-  if (userAnswer === anserArr[0]) {
-    router.push('/japanese/q2');
-  }
-}, [userAnswer, router]);
+// useEffect(() => {
+//   console.log('回答を更新');
+//   // if (userAnswer === anserArr[0]) {
+//   //   // router.push('/japanese/q2');
+//   //   loadStage(params,userAnswer);
+//   // }
+  
+// }, [userAnswer, router]);
+
+useLoadStage();
 
 const postAnswer = (e: React.FormEvent) => {
   e.preventDefault();
-  console.log(userInput);
-  console.log(anserArr[0]);
   // Appコンポーネントがレンダリングされたことを確認する
   if (isAppRendered) {
     setUserAnswer(userInput);
   }
-
 };
 
 
