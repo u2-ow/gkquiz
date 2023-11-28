@@ -5,9 +5,7 @@ import Styles from "@/components/FormInput.module.scss"
 
 import { useAtom } from "jotai";
 import { currentQuesionAnswerAtom, currentQuesionNumberAtom, userInputAtom, userLifeAtom } from '@/jotail/atoms';
-import { useParams, useRouter } from 'next/navigation'
-import { useLoadStage } from '@/app/lib/useLoadStage';
-
+import { useRouter } from 'next/navigation'
 
 
 
@@ -33,34 +31,23 @@ const [qnumber,setQnumber] = useAtom(currentQuesionNumberAtom);
 const [userAnswer, setUserAnswer] = useState("")
 const anserArr = [answer[qnumber -1]]
 
-/* Appコンポーネントが更新されたかどうかを判別するためのステート*/
-const [isAppRendered, setIsAppRendered] = useState(false);
 
-const params = useParams();
-// console.log(params)
-
-useEffect(() => {
-  setIsAppRendered(true);
-}, []);
-
-// useEffect(() => {
-//   console.log('回答を更新');
-//   // if (userAnswer === anserArr[0]) {
-//   //   // router.push('/japanese/q2');
-//   //   loadStage(params,userAnswer);
-//   // }
-  
-// }, [userAnswer, router]);
-
-useLoadStage();
 
 const postAnswer = (e: React.FormEvent) => {
   e.preventDefault();
-  // Appコンポーネントがレンダリングされたことを確認する
-  if (isAppRendered) {
-    setUserAnswer(userInput);
-  }
+  console.log(userInput);
+  console.log(anserArr[0]);
+  setUserAnswer(userInput);
+
+
 };
+
+useEffect(()=>{
+  if(userAnswer === "ひかきん"){
+    console.log('ブンブン')
+    router.push('/japanese/q2')
+  }
+},[router])
 
 
 
