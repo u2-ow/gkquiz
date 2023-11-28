@@ -47,7 +47,7 @@ useEffect(()=>{
     console.log('ブンブン')
     router.push('/japanese/q2')
   }
-},[router])
+},[userAnswer])
 
 
 
