@@ -25,8 +25,10 @@ export default function App() {
   /*動的パラメーターを取得*/
   const params = useParams()
   // let currentQuestionNumber = quesitonControl(params);
-  setCurrentQuestionNumber(quesitonControl(params))
-  quesitonControl(params);
+  useEffect(()=>{
+    setCurrentQuestionNumber(quesitonControl(params))
+    quesitonControl(params);
+  },[])
 
   useEffect(() => {
     /*データベースから問題を取得*/
